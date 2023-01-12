@@ -43,21 +43,29 @@ import {login_api} from "../utils/api";
 import HomeBanner from '@/components/HomeBanner.vue'
 import { ElMessage } from 'element-plus'
 import { ref } from 'vue'
+import router from "@/router";
+import {localSet} from "@/utils";
+
+//
 const username = ref('')
 const password = ref('')
-
 function login(){
-
+  //校验密码是否为空
   if (!password.value){
     ElMessage.error('密码不能为空')
     return
   }
+
+  //访问登录接口，登录成功的情况下将token存入localStorage
   let data = {
     username:username.value,
     password:password.value
   }
   login_api(data).then(res=>{
+    localSet('token',res.jwt)
+    router.push("/")
     console.log(res)
   })
 }
+
 </script>
