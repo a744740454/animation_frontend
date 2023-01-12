@@ -28,7 +28,7 @@ import "swiper/css/pagination";
 // import required modules
 import {EffectFade, Navigation, Pagination, Autoplay} from "swiper";
 import {onMounted, reactive, ref} from "vue";
-import {get_banner} from "../utils/api";
+import {get_banner_api} from "../utils/api";
 
 export default {
   components: {
@@ -39,7 +39,7 @@ export default {
     let imgList = reactive([])
 
     // 获取背景轮播图
-    get_banner().then(res => {
+    get_banner_api().then(res => {
       let image_urls = res.image_urls
       for (let i = 0; i < image_urls.length; i++) {
         imgList.push(image_urls[i])
