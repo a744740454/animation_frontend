@@ -16,3 +16,7 @@ export default createRouter({
   history: createWebHashHistory(),
   routes, // `routes: routes` 的缩写
 })
+
+routes.push({ path: '/', component: Home })
+
+

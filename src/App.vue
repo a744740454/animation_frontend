@@ -1,16 +1,18 @@
 <script>
 import routes from '@/router/index'
-import HelloWorld from '@/views/Home.vue'
-// import { useRouter } from 'vue-router'
 import {localGet} from "@/utils";
+// import { ElMessage } from 'element-plus'
 
-// const router = useRouter()
 
 routes.beforeEach((to, from, next) => {
   if (to.path === '/login') {
     // 如果路径是 /login 则正常执行
     next()
   } else {
+    if (from === "/login"){
+      next()
+      // ElMessage.success("登录成功")
+    }
     // 如果不是 /login，判断是否有 token
     if (!localGet('token')) {
       // 如果没有，则跳至登录页面

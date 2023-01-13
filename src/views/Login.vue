@@ -42,13 +42,15 @@ import Footer from "@/components/Footer.vue";
 import {login_api} from "../utils/api";
 import HomeBanner from '@/components/HomeBanner.vue'
 import { ElMessage } from 'element-plus'
+import { useRouter } from 'vue-router'
 import { ref } from 'vue'
-import router from "@/router";
 import {localSet} from "@/utils";
 
-//
+//定义对象
 const username = ref('')
 const password = ref('')
+const router = useRouter()
+
 function login(){
   //校验密码是否为空
   if (!password.value){
@@ -63,7 +65,9 @@ function login(){
   }
   login_api(data).then(res=>{
     localSet('token',res.jwt)
+    ElMessage.success('登录成功')
     router.push("/")
+    // this.$router.push('/')
     console.log(res)
   })
 }

@@ -1,11 +1,11 @@
 <script setup>
 import Footer from "@/components/Footer.vue";
-import HomeBanner from '@/components/HomeBanner.vue'
+import Header from "@/components/Header.vue";
 
 </script>
 
 <template>
-    <HomeBanner></HomeBanner>
+    <Header></Header>
     <Footer></Footer>
 </template>
 
